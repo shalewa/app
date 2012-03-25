@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  
+
+	<!-- 
+		include flowplayer JavaScript file that does  
+		Flash embedding and provides the Flowplayer API.
+	-->
+	<script type="text/javascript" src="/static/js/flowplayer-3.2.8.min.js"></script>
+	
+	<!-- some minimal styling, can be removed -->
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+      	<link rel="stylesheet" type="text/css" href="/static/css/playlist.css">
+	
+	<!-- page title -->
+	<title>Minimal Flowplayer setup</title>
+
+    </head>
+    <body>
+            {% if name %}
+               <h1>Hello {{ name }}!</h1>
+           {% else %}
+               <h1>Hello World!</h1>
+           {% endif %}
+
+<div class="clips petrol" style="float:left">
+ 
+    <!-- single playlist entry -->
+    <a href="KimAronson-TwentySeconds59483.flv" class="first">
+        Palm trees and the Sun
+        <span>HTTP streaming</span>
+        <em>0:20 min</em>
+    </a>
+ 
+    <a href="KimAronson-TwentySeconds58192.flv">
+        Happy feet inside a car
+        <span>HTTP streaming</span>
+        <em>0:20 min</em>
+    </a>
+ 
+    <a href="KimAronson-TwentySeconds63617.flv">
+        Park side life
+        <span>HTTP streaming</span>
+        <em>0:20 min</em>
+    </a>
+ 
+</div>
+ 
+<!-- player container and a splash image (play button) -->
+<a class="player plain" id="player2"  style="float:left; height: 300px; width:350px">
+    <img class="button" src="/static/images/play_text_large.png" />
+</a>
+ 
+<!-- let rest of the page float normally -->
+<br clear="all"/>
+
+        <script type="text/javascript">
+      $f("player2", "/static/js/flowplayer-3.2.8.swf", {
+        clip: {baseUrl: 'http://blip.tv/file/get'}}).playlist("div.petrol", {loop:true});
+    </script>
+    </body>
+</html>

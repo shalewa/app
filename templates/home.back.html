@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  
+
+	<!-- 
+		include flowplayer JavaScript file that does  
+		Flash embedding and provides the Flowplayer API.
+	-->
+	<script type="text/javascript" src="/static/js/flowplayer-3.2.8.min.js"></script>
+	
+	<!-- some minimal styling, can be removed -->
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	
+	<!-- page title -->
+	<title>Minimal Flowplayer setup</title>
+
+    </head>
+    <body>
+            {% if name %}
+               <h1>Hello {{ name }}!</h1>
+           {% else %}
+               <h1>Hello World!</h1>
+           {% endif %}
+
+         <a href="http://localhost:5000/static/videos/sample_iPod.m4v" style="display:block;width:425px;height:300px; margin-top: 2em; margin-left: auto; margin-right: auto;" id="player"></a>
+
+        <script type="text/javascript">
+      $f("player", 
+{
+ 
+      // our Flash component
+      src: "/static/js/flowplayer-3.2.8.swf",
+//playlist
+playlist: [
+            {
+                url: 'http://localhost:5000/static/videos/sample_iPod.m4v',
+                title: 'Ipod Sample'
+            },
+            {
+                url: 'http://cdn.kaltura.org/apis/html5lib/kplayer-examples/media/bbb_trailer_iphone.m4v',
+                title: 'Rabbit video'
+            }
+        ],
+ 
+        // show playlist buttons in controlbar
+        plugins: {
+            controls: {
+                playlist: true
+            }
+        }
+ 
+       });
+
+        $f("player").playlist("div.clips:first", {loop:true});
+    </script>
+    </body>
+</html>
